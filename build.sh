@@ -24,7 +24,7 @@ rpm-ostree install akmods mock dnf
 
     curl -L https://negativo17.org/repos/fedora-nvidia.repo -o /etc/yum.repos.d/fedora-nvidia.repo
     
-    dnf update
+    dnf upgrade -y
     
     rpm-ostree install akmod-nvidia
 
