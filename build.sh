@@ -20,11 +20,9 @@ KERNEL="$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 
 #### Example for enabling a System Unit File
 
-rpm-ostree install akmods mock dnf5
+rpm-ostree install akmods mock
 
     curl -L https://negativo17.org/repos/fedora-nvidia.repo -o /etc/yum.repos.d/fedora-nvidia.repo
-    
-    dnf5 upgrade -y
     
     rpm-ostree install akmod-nvidia
 
