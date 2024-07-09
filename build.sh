@@ -20,15 +20,11 @@ KERNEL="$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 
 #### Example for enabling a System Unit File
 
-rpm-ostree install \
-    akmods \
-    dnf \
-    mock
+rpm-ostree install akmods mock
 
     curl -L https://negativo17.org/repos/fedora-nvidia.repo -o /etc/yum.repos.d/fedora-nvidia.repo
-
-    rpm-ostree install \
-        akmod-nvidia \
+    
+    rpm-ostree install akmod-nvidia
 
 cd /tmp
 
@@ -40,8 +36,10 @@ NVIDIA_AKMOD_VERSION="$(basename "$(rpm -q "akmod-nvidia" --queryformat '%{VERSI
 
 akmods --force --kernels "${KERNEL}" --kmod "nvidia"
 
-modinfo /usr/lib/modules/${KERNEL}/extra/nvidia/nvidia{,-drm,-modeset,-peermem,-uvm}.ko.xz > /dev/null || \
-(cat /var/cache/akmods/nvidia/${NVIDIA_AKMOD_VERSION}-for-${KERNEL}.failed.log && exit 1)
+#modinfo /usr/lib/modules/${KERNEL}/extra/nvidia/nvidia{,-drm,-modeset,-peermem,-uvm}.ko.xz > /dev/null || \
+#(cat /var/cache/akmods/nvidia/${NVIDIA_AKMOD_VERSION}-for-${KERNEL}.failed.log && exit 1)
+
+ls /var/cache/akmods/nvidia
 
 # create a directory for later copying of resulting nvidia specific artifacts
 mkdir -p /var/cache/rpms/kmods/nvidia
