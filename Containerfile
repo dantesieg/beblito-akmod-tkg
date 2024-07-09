@@ -54,7 +54,7 @@ RUN curl -Lo /etc/yum.repos.d/whitehara-kernel-tkg-zen2-preempt-fedora-40.repo h
 
 RUN rpm-ostree cliwrap install-to-root /
 
-RUN rpm-ostree override replace --experimental --from repo='copr:copr.fedorainfracloud.org:whitehara:kernel-tkg-zen2-preempt-fedora-40' kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra && ostree container commit
+RUN rpm-ostree override replace --experimental --from repo='copr:copr.fedorainfracloud.org:whitehara:kernel-tkg-zen2-preempt' kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra && ostree container commit
 # RUN rpm-ostree install fontconfig-font-replacements fontconfig-enhanced-defaults distrobox && ostree container commit
 
 COPY *.sh /tmp/
